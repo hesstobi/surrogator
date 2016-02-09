@@ -13,6 +13,9 @@
  * @link     https://sourceforge.net/p/surrogator/
  */
 namespace surrogator;
+
+require '../vendor/autoload.php';
+
 $cfgFile = __DIR__ . '/../data/surrogator.config.php';
 if (!file_exists($cfgFile)) {
     $cfgFile = '/etc/surrogator.config.php';
@@ -81,6 +84,10 @@ if (isset($_GET['default'])) {
         if ($_GET['default'] == '404') {
             $defaultMode = '404';
             $default     = '404';
+        } else if ($_GET['default'] == 'identicon') {
+            //mystery man fallback image
+            $defaultMode = 'identicon';
+            $default     = 'identicon';
         } else if ($_GET['default'] == 'mm') {
             //mystery man fallback image
             $defaultMode = 'local';
@@ -119,6 +126,10 @@ if (!file_exists($imgFile)) {
         if (!file_exists($imgFile)) {
             err(500, 'Default file is missing');
         }
+    } else if ($defaultMode == 'identicon') {
+        $identicon = new \Identicon\Identicon();
+        $identicon->displayImage($reqHash,$reqSize);
+        exit();
     } else {
         err(500, 'Invalid defaultMode');
     }

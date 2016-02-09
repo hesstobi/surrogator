@@ -13,6 +13,7 @@ Features:
 - If no image at the user requested size is found, the next larger image gets
   returned.
 - Supports the ``mm`` fallback image (mystery man)
+- Supports the ``identicon`` fallback image (https://github.com/yzalis/Identicon)
 
 __ https://www.libravatar.org/
 
@@ -100,3 +101,4 @@ __ http://www.gnu.org/licenses/agpl.html
 Author
 ======
 Written by Christian Weiske, cweiske@cweiske.de
+Modified by Tobias Hess, tobias.hess@tu-dresden.de
