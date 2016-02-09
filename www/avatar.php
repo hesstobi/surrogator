@@ -122,7 +122,7 @@ foreach ($sizes as $size) {
 $imgFile = $varDir . $targetSize . '/' . $reqHash . '.png';
 if (!file_exists($imgFile)) {
 
-    if ($hashTyp == 'md5') {
+    if ($hashTyp == 'md5' && $enableGravatarRedirect) {
         $gravatar = 'https://secure.gravatar.com/avatar/' . $reqHash . '?d=404&r=g&s=' . $targetSize;
         $gravatar_headers = @get_headers($gravatar);
         if($gravatar_headers[0] == 'HTTP/1.1 200 OK') {

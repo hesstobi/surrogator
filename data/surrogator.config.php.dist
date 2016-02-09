@@ -50,4 +50,9 @@ $forceUpdate = false;
 $default     = 'default.png';
 $defaultMode = 'local';
 
+/**
+ * Enable Redirect to Gravatar
+ */
+$enableGravatarRedirect = false;
+
 ?>
