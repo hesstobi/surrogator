@@ -55,7 +55,12 @@ $reqHash = $uriParts[2];
 if (strpos($reqHash, '?') !== false) {
     $reqHash = substr($reqHash, 0, strpos($reqHash, '?'));
 }
-if (strlen($reqHash) !== 32 && strlen($reqHash) !== 64) {
+$hashTyp = '';
+if (strlen($reqHash) == 32) {
+    $hashTyp = 'md5';
+} else if (strlen($reqHash) == 64) {
+    $hashTyp = 'sha256';
+} else {
     err(400, 'Hash has to be 32 or 64 characters long');
 }
 
@@ -116,6 +121,15 @@ foreach ($sizes as $size) {
 
 $imgFile = $varDir . $targetSize . '/' . $reqHash . '.png';
 if (!file_exists($imgFile)) {
+
+    if ($hashTyp == 'md5') {
+        $gravatar = 'https://secure.gravatar.com/avatar/' . $reqHash . '?d=404&r=g&s=' . $targetSize;
+        $gravatar_headers = @get_headers($gravatar);
+        if($gravatar_headers[0] == 'HTTP/1.1 200 OK') {
+            header('Location: ' . $gravatar);
+            exit();
+        }
+    }
     if ($defaultMode == '404') {
         err(404, 'File does not exist');
     } else if ($defaultMode == 'redirect') {
