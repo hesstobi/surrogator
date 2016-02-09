@@ -43,4 +43,11 @@ $logLevel = 1;
  * to true, the images will always be regenerated.
  */
 $forceUpdate = false;
+
+/**
+ * Default Values for Avatars
+ */
+$default     = 'default.png';
+$defaultMode = 'local';
+
 ?>

@@ -70,8 +70,6 @@ if (isset($_GET['size'])) {
     $reqSize = intval($_GET['size']);
 }
 
-$default     = 'default.png';
-$defaultMode = 'local';
 if (isset($_GET['d'])) {
     $_GET['default'] = $_GET['d'];
 }
