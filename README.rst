@@ -28,10 +28,15 @@ Setup
 1. Copy ``data/surrogator.config.php.dist`` to ``data/surrogator.config.php``
    (remove the ``.dist``)
 2. Adjust the config file to your needs
-3. (optional) Create a default image and put it into the raw folder, name it ``default.png``
-4. Setup your web server and set the document root to the ``www/`` directory.
+3. Install dependencies with composer::
+
+    $ wget http://getcomposer.org/composer.phar
+    $ php composer.phar install
+
+4. (optional) Create a default image and put it into the raw folder, name it ``default.png``
+5. Setup your web server and set the document root to the ``www/`` directory.
    Make sure you allow the ``.htaccess`` file and have ``mod_rewrite`` activated.
-5. Add DNS entries for ``_avatars._tcp`` and ``_avatars-sec._tcp``.
+6. Add DNS entries for ``_avatars._tcp`` and ``_avatars-sec._tcp``.
    A bind config file excerpt would look like this::
 
     _avatars._tcp.example.org.     IN SRV 0 0 80  avatars.example.org
