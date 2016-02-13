@@ -49,7 +49,7 @@ try {
     // Success!
     shell_exec('rm ' . __DIR__ . '/../raw/' . $shib_mail . '.*');
     $file->upload();
-	$output = shell_exec('php ' . __DIR__ . '/../surrogator.php ');
+	$output = shell_exec('php ' . __DIR__ . '/../surrogator.php ./raw/' . $data["name"]);
 
 	$results = array(
     	'status'  => 'ok',

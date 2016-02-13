@@ -21,13 +21,9 @@ require __DIR__ . '/shib_attr.php';
 
 list($md5, $sha256) = getHashes($shib_mail);
 
-shell_exec('rm ' . $rawDir  . $shib_mail . '.*');
-shell_exec('rm ' . $rawDir . $shib_mail . '.*');
-
 shell_exec('rm -r ' . $varDir . '*/' . $md5 . '.*');
 shell_exec('rm -r ' . $varDir . '*/' . $sha256 . '.*');
-
-
+shell_exec('rm ' . $varDir . 'square/' . $shib_mail . '.*');
 shell_exec('rm ' . $rawDir . $shib_mail . '.*');
 shell_exec('git -C ' . $rawDir . ' checkout -- ' . $shib_mail . '.*');
 shell_exec('php ' . __DIR__ . '/../surrogator.php ');
