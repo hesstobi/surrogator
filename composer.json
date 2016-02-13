@@ -1,5 +1,6 @@
 {
     "require": {
-        "yzalis/identicon": "*"
+        "yzalis/identicon": "*",
+        "codeguy/upload": "^1.3"
     }
 }
